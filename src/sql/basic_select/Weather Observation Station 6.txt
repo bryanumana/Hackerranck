@@ -1,0 +1,19 @@
+Query the list of CITY names starting with vowels (i.e., a, e, i, o, or u) from STATION.
+Your result cannot contain duplicates.
+
+The STATION table is described as follows:
+| Field  | Type         |
+| ID     | NUMBER       |
+| CITY   | VARCHAR2(21) |
+| STATE  | VARCHAR2(2)  |
+| LAT_N  | NUMBER       |
+| LONG_W | NUMBER       |
+
+SOLUTION:
+-LOWER= Convierte el caracter en minúscula
+-SUBSTRING(cadena,inicio,longuitud)= Separa la cadena de texto segpun la posición que se le indique
+-IN= Filtra los resultados por los parametros que se le envién
+
+SELECT DISTINCT CITY
+FROM STATION
+WHERE LOWER(SUBSTRING(CITY, 1, 1)) IN ('a', 'e', 'i', 'o', 'u')
