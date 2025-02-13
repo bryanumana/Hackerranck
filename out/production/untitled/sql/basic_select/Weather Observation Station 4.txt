@@ -9,7 +9,7 @@ The STATION table is described as follows:
 | LONG_W | NUMBER       |
 
 SOLUTION:
--COUNT()= El contador del parametro que se le envía
+-COUNT()= El contador del parámetro que se le envía
 
 SELECT COUNT(CITY) - COUNT(DISTINCT CITY) AS Difference
 FROM STATION;

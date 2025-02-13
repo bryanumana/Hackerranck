@@ -14,13 +14,13 @@ The STATION table is described as follows:
 SOLUTION:
 -LENGTH= Sirve para contar el número de elementos que componen el tipo varchar
 
-//Más corto = De menor a mayor y alfabeticamente en caso de empate
+//Más corto = De menor a mayor y alfabéticamente en caso de empate
 SELECT CITY, LENGTH(CITY) AS NameLength
 FROM STATION
 ORDER BY LENGTH(CITY), CITY
 LIMIT 1;
 
-//Más largo = De mayor a menor y alfabeticamente en caso de empate
+//Más largo = De mayor a menor y alfabéticamente en caso de empate
 SELECT CITY, LENGTH(CITY) AS NameLength
 FROM STATION
 ORDER BY LENGTH(CITY) DESC, CITY

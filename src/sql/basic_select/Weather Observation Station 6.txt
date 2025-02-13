@@ -11,8 +11,8 @@ The STATION table is described as follows:
 
 SOLUTION:
 -LOWER= Convierte el caracter en minúscula
--SUBSTRING(cadena,inicio,longuitud)= Separa la cadena de texto segpun la posición que se le indique
--IN= Filtra los resultados por los parametros que se le envién
+-SUBSTRING(cadena,inicio,longuitud)= Separa la cadena de texto según la posición que se le indique
+-IN= Filtra los resultados por los parametros que se le envíen
 
 SELECT DISTINCT CITY
 FROM STATION
