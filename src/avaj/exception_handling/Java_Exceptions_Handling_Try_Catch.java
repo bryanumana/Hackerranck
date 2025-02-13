@@ -1,9 +1,9 @@
-package avaj.exception_handing;
+package avaj.exception_handling;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class Java_Exceptions_Handing_Try_Catch {
+public class Java_Exceptions_Handling_Try_Catch {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 

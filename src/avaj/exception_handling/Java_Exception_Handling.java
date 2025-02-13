@@ -1,4 +1,4 @@
-package avaj.exception_handing;
+package avaj.exception_handling;
 
 import java.util.Scanner;
 
@@ -15,7 +15,7 @@ class MyCalculator {
     }
 }
 
-public class Java_Exception_Handing {
+public class Java_Exception_Handling {
     public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
         MyCalculator calculator = new MyCalculator();
