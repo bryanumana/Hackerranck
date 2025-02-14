@@ -1,0 +1,77 @@
+Amber's conglomerate corporation just acquired some new companies. Each of the companies follows this hierarchy:
+
+Founder -> Lead Manager -> Senior Manager -> Manager -> Employee
+
+Given the table schemas below,
+write a query to print the
+company_code, founder name, total number of lead managers, total number of senior managers, total number of managers, and total number of employees.
+Order your output by ascending company_code.
+
+Note:
+
+The tables may contain duplicate records.
+The company_code is string, so the sorting should not be numeric.
+For example, if the company_codes are C_1, C_2, and C_10, then the ascending company_codes will be C_1, C_10, and C_2.
+
+The following tables contain company data:
+
+Company: The company_code is the code of the company and founder is the founder of the company.
+
+| Column       | Type   |
+| company_code | String |
+| founder      | String |
+
+Lead_Manager: The lead_manager_code is the code of the lead manager, and the company_code is the code of the working company.
+
+| Column            | Type   |
+| company_code      | String |
+| lead_manager_code | String |
+
+Senior_Manager: The senior_manager_code is the code of the senior manager, the lead_manager_code is the code of its lead manager, and the company_code is the code of the working company.
+
+| Column              | Type   |
+| company_code        | String |
+| lead_manager_code   | String |
+| senior_manager_code | String |
+
+Manager: The manager_code is the code of the manager, the senior_manager_code is the code of its senior manager, the lead_manager_code is the code of its lead manager, and the company_code is the code of the working company.
+
+| Column              | Type   |
+| company_code        | String |
+| lead_manager_code   | String |
+| senior_manager_code | String |
+| manager_code        | String |
+
+Employee: The employee_code is the code of the employee, the manager_code is the code of its manager, the senior_manager_code is the code of its senior manager, the lead_manager_code is the code of its lead manager, and the company_code is the code of the working company.
+
+| Column              | Type   |
+| company_code        | String |
+| lead_manager_code   | String |
+| senior_manager_code | String |
+| manager_code        | String |
+| employee_code       | String |
+
+SOLUTION:
+
+-LEFT JOIN: Usamos LEFT JOIN para asegurarnos de que todas las empresas (Company) se incluyan en el resultado, incluso si no tienen gerentes principales, gerentes senior, gerentes o empleados.
+-COUNT(DISTINCT ...): Contamos los valores únicos de cada tipo de gerente y empleado para evitar duplicados.
+-Agrupación (GROUP BY): Agrupamos por company_code y founder para obtener un resultado por empresa.
+-Ordenamiento (ORDER BY): Ordenamos el resultado por company_code en orden ascendente, como se solicita.
+
+SELECT
+    C.company_code,
+    C.founder,
+    COUNT(DISTINCT LM.lead_manager_code) AS total_lead_managers,
+    COUNT(DISTINCT SM.senior_manager_code) AS total_senior_managers,
+    COUNT(DISTINCT M.manager_code) AS total_managers,
+    COUNT(DISTINCT E.employee_code) AS total_employees
+FROM
+    Company C
+    LEFT JOIN Lead_Manager LM ON C.company_code = LM.company_code
+    LEFT JOIN Senior_Manager SM ON LM.lead_manager_code = SM.lead_manager_code
+    LEFT JOIN Manager M ON SM.senior_manager_code = M.senior_manager_code
+    LEFT JOIN Employee E ON M.manager_code = E.manager_code
+GROUP BY
+    C.company_code, C.founder
+ORDER BY
+    C.company_code;
