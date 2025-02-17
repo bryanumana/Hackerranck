@@ -1,0 +1,20 @@
+Query the following two values from the STATION table:
+The sum of all values in LAT_N rounded to a scale of  decimal places.
+The sum of all values in LONG_W rounded to a scale of  decimal places.
+
+The STATION table is described as follows:
+| Field  | Type         |
+| ID     | NUMBER       |
+| CITY   | VARCHAR2(21) |
+| STATE  | VARCHAR2(2)  |
+| LAT_N  | NUMBER       |
+| LONG_W | NUMBER       |
+
+SOLUTION:
+-ROUND: Redodea el número si es mayor a 5 el número más cercano y si es menor a 5 hacia abajo,
+conservando el número de decimales
+
+SELECT
+        ROUND(SUM(LAT_N), 2) as latitude_sum,
+        ROUND(SUM(LONG_W),2) as longitud_sum
+FROM STATION
