@@ -1,0 +1,38 @@
+Given the CITY and COUNTRY tables,
+query the names of all the continents (COUNTRY.Continent)
+and their respective average city populations (CITY.Population)
+rounded down to the nearest integer.
+
+The CITY table is described as follows:
+| Field      | Type         |
+| ID         | NUMBER       |
+| NAME       | VARCHAR2(17) |
+| COUNTRYCODE| VARCHAR2(3)  |
+| DISTRICT   | VARCHAR2(20) |
+| POPULATION | NUMBER       |
+
+The COUNTRY table is described as follows:
+| Field          | Type        |
+| CODE           | VARCHAR(3)  |
+| NAME           | VARCHAR(44) |
+| CONTINENT      | VARCHAR(13) |
+| REGION         | VARCHAR(25) |
+| SUPERFACEAREA  | NUMBER      |
+| INDEPYEAR      | VARCHAR(5)  |
+| POPULATION     | NUMBER      |
+| LIFEEXPECTANCY | VARCHAR(4)  |
+| GNP            | NUMBER      |
+| GNPOLD         | VARCHAR(9)  |
+| LOCALNAME      | VARCHAR(44) |
+| GOVERNMENTFORM | VARCHAR(44) |
+| HEADOFSTATE    | VARCHAR(32) |
+| CAPITAL        | VARCHAR(4)  |
+| CODE2          | VARCHAR(2)  |
+
+SOLUTION:
+SELECT
+        COUNTRY.CONTINENT,
+        FLOOR(AVG(CITY.POPULATION))
+FROM COUNTRY
+JOIN CITY ON COUNTRY.CODE = CITY.COUNTRYCODE
+GROUP BY COUNTRY.CONTINENT
